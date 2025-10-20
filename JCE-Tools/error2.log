@@ -1,0 +1,36 @@
+[10-Mar-2025 08:28:16 Asia/Jakarta] Invalid API Key
+[10-Sep-2025 08:29:32 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 08:29:36 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 08:30:24 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 10:24:25 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 10:26:56 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 12:11:37 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57
+[10-Sep-2025 13:45:51 Asia/Jakarta] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'apsx2353_jce-data.jce_all_pc' doesn't exist in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php:57
+Stack trace:
+#0 /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php(57): mysqli->query()
+#1 {main}
+  thrown in /home/apsx2353/public_html/webtechsolution.my.id/JCE-Tools/jce-cek2.php on line 57

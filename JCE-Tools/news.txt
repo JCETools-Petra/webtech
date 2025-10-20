@@ -1,0 +1,3 @@
+Jika anda 3x salah memasukkan kode, program akan memblokir akses untuk PC anda.
+
+Jadi jangan salah memasukkan kode.

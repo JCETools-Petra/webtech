@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem POS - Webtech Solution</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #e53935;
+            --primary-glow: rgba(229, 57, 53, 0.7);
+            --dark-color: #1a1a1a;
+            --footer-bg-color: #111111;
+            --card-bg-color: #2c2c2c;
+            --text-color: #f4f4f4;
+            --text-secondary: #aaaaaa;
+            --highlight-color: #d32f2f;
+            --header-height: 70px; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 1320px; 
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            width: 100%;
+        }
+        h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; }
+
+        /* Header & Navigation */
+        .main-header {
+            background-color: rgba(26, 26, 26, 0.9); 
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0; 
+            height: var(--header-height);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000; 
+            border-bottom: 1px solid #333;
+            display: flex; 
+            align-items: center; 
+        }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-img { height: 45px; transition: all 0.3s ease; filter: drop-shadow(0 0 7px var(--primary-glow)); }
+        .logo-img:hover { transform: scale(1.05); filter: drop-shadow(0 0 12px var(--primary-glow)); }
+
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
+        .hamburger-icon { display: block; width: 25px; height: 3px; background-color: var(--text-color); margin: 5px 0; transition: all 0.3s ease-in-out; }
+        .main-nav ul { list-style: none; display: flex; margin: 0; padding: 0;} 
+        .main-nav ul li { margin-left: 25px; }
+        .main-nav ul li a { color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s ease; padding: 0.5rem 0;}
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active { color: var(--primary-color); }
+        
+        /* === CSS SPESIFIK UNTUK HALAMAN POS === */
+        .pos-page-main { 
+            flex-grow: 1;        
+            display: flex;      
+            flex-direction: column;
+            padding-top: 2rem;    
+            padding-bottom: 2rem; 
+        }
+        
+        /* --- CSS BARU UNTUK INFO BOX DEMO --- */
+        .pos-demo-info {
+            background-color: var(--card-bg-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem; /* Jarak ke iframe */
+            border: 1px solid #444;
+        }
+        .pos-demo-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+        .pos-demo-info p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .pos-demo-info p strong {
+            color: var(--text-color);
+        }
+        /* --- Akhir CSS Info Box Demo --- */
+        
+        .pos-page-main iframe {
+            width: 100%;         
+            flex-grow: 1;        
+            border: none;        
+            border-radius: 8px;  
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+            min-height: 70vh; /* Tinggi minimal dikurangi dari 75vh untuk memberi ruang pada info box */
+        }
+
+        /* Footer */
+        .site-footer { background-color: var(--footer-bg-color); color: var(--text-secondary); padding: 4rem 0 0 0; }
+        .footer-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding-bottom: 3rem; }
+        .footer-col h4 { color: var(--text-color); font-size: 1.1rem; margin-bottom: 1.5rem; position: relative; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 2px; background-color: var(--primary-color); }
+        .footer-col .logo-img { margin-bottom: 1rem; filter: none; } 
+        .footer-col p { font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a { color: var(--text-secondary); text-decoration: none; transition: color 0.3s ease; }
+        .footer-col ul li a:hover { color: var(--primary-color); }
+        .contact-info li { display: flex; align-items: center; gap: 10px; }
+        .contact-info svg { width: 16px; height: 16px; fill: var(--text-secondary); }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { display: inline-block; width: 40px; height: 40px; background-color: #2c2c2c; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background-color 0.3s ease; }
+        .social-links a:hover { background-color: var(--primary-color); }
+        .social-links svg { width: 20px; height: 20px; fill: var(--text-color); }
+        .footer-bottom { border-top: 1px solid #333; padding: 1.5rem 0; text-align: center; font-size: 0.9rem; }
+        
+        @media(max-width: 992px) { 
+            .menu-toggle { display: flex; flex-direction: column; justify-content: space-around; }
+            .main-nav { display: none; position: absolute; top: var(--header-height); left: 0; right: 0; width: 100%; background-color: var(--card-bg-color); box-shadow: 0 4px 8px rgba(0,0,0,0.2); padding-top: 1rem; padding-bottom: 1rem; }
+            .main-nav.active { display: block; }
+            .main-nav ul { flex-direction: column; align-items: center; width: 100%; }
+            .main-nav ul li { margin-left: 0; width: 100%; text-align: center; }
+            .main-nav ul li a { display: block; padding: 1rem 0; border-bottom: 1px solid #444; }
+            .main-nav ul li:last-child a { border-bottom: none; }
+        }
+        @media(max-width: 768px) {
+            h2 { font-size: 2rem; }
+        }
+         .menu-toggle.active .hamburger-icon:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+         .menu-toggle.active .hamburger-icon:nth-child(2) { opacity: 0; }
+         .menu-toggle.active .hamburger-icon:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html"> 
+                <img src="logo-webtech.png" alt="Webtech Solution Logo" class="logo-img">
+            </a>
+            <button class="menu-toggle" aria-label="Buka menu" aria-expanded="false">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
+            <nav class="main-nav">
+                 <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#services">Layanan</a></li>
+                    <li><a href="index.html#packages">Paket</a></li>
+                    <li><a href="index.html#flexibility">Fleksibilitas</a></li> 
+                    <li><a href="index.html#feature-spotlight">Fitur 360°</a></li>
+                    <li><a href="pos.html" class="active">POS</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pos-page-main container"> 
+        <div class="pos-demo-info">
+            <h3>Akses Demo Sistem POS</h3>
+            <p>Silakan gunakan kredensial berikut untuk mencoba demo:</p>
+            <p><strong>Username:</strong> <span>admin@example.com</span></p>
+            <p><strong>Password:</strong> <span>12345678</span></p>
+        </div>
+
+        <iframe 
+            src="https://s1.webtechsolution.my.id/admin" 
+            title="Sistem POS Webtech Solution"
+            allow="fullscreen">
+        </iframe>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-col">
+                    <img src="logo-webtech.png" alt="Webtech Solution Logo" class="logo-img" style="height: 40px;">
+                    <p>Webtech Solution adalah partner digital Anda dalam membangun website yang modern, cepat, dan fungsional untuk mendorong pertumbuhan bisnis.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#services">Layanan</a></li>
+                        <li><a href="index.html#packages">Paket</a></li>
+                        <li><a href="index.html#flexibility">Fleksibilitas</a></li> 
+                        <li><a href="index.html#feature-spotlight">Fitur 360°</a></li>
+                        <li><a href="pos.html">POS</a></li>
+                        <li><a href="#">Tentang Kami</a></li> 
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak Kami</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,4H4C2.897,4,2,4.897,2,6v12c0,1.103,0.897,2,2,2h16c1.103,0,2-0.897,2-2V6C22,4.897,21.103,4,20,4z M20,6l-8,5l-8-5 H20z M4,18V7.3l8,5l8-5V18H4z"/></svg>
+                            <a href="mailto:josh@webtechsolution.my.id">josh@webtechsolution.my.id</a>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.348,14.265c-0.231-0.145-0.533-0.18-0.803-0.101l-2.64,0.762c-0.357,0.102-0.747-0.035-0.982-0.342l-2.21-2.946 c-0.236-0.307-0.294-0.708-0.15-1.064l0.879-2.213c0.165-0.415,0.019-0.881-0.334-1.119L6.21,5.345 C5.842,5.101,5.373,5.163,5.08,5.492L3.541,7.285C2.463,8.558,2.83,10.51,4.254,12.592c2.046,2.984,5.533,5.43,9.418,5.43 c0.54,0,1.061-0.081,1.551-0.231l0.015-0.004l2.949-0.848c0.416-0.119,0.73-0.469,0.793-0.903l0.21-1.465 C18.271,14.703,17.89,14.409,17.348,14.265z"/></svg>
+                            <span>+62 812-9943-0992</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2C7.589,2,4,5.589,4,10c0,4.411,4.142,10.274,7.217,11.802c0.24,0.119,0.526,0.119,0.766,0 C15.858,20.274,20,14.411,20,10C20,5.589,16.411,2,12,2z M12,13c-1.654,0-3-1.346-3-3s1.346-3,3-3s3,1.346,3,3S13.654,13,12,13z"/></svg>
+                            <span>Jakarta, Indonesia</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/webtech.solution.josh/" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2.163c3.204,0,3.584,0.012,4.85,0.07c1.252,0.058,2.094,0.274,2.836,0.57c0.784,0.315,1.423,0.73,2.059,1.365 c0.636,0.636,1.05,1.275,1.365,2.059c0.296,0.742,0.512,1.584,0.57,2.836c0.058,1.266,0.07,1.646,0.07,4.85 c0,3.204-0.012,3.584-0.07,4.85c-0.058,1.252-0.274,2.094-0.57,2.836c-0.315,0.784-0.73,1.423-1.365,2.059 c-0.636,0.636-1.275,1.05-2.059,1.365c-0.742,0.296-1.584,0.512-2.836,0.57c-1.266,0.058-1.646,0.07-4.85,0.07 c-3.204,0-3.584-0.012-4.85-0.07c-1.252-0.058-2.094-0.274-2.836-0.57c-0.784-0.315-1.423-0.73-2.059-1.365 C2.73,18.579,2.316,17.94,2.001,17.156c-0.296-0.742-0.512-1.584-0.57-2.836C1.373,13.066,1.361,12.686,1.361,9.48 c0-3.204,0.012-3.584,0.07-4.85c0.058-1.252,0.274-2.094,0.57-2.836c0.315-0.784,0.73-1.423,1.365-2.059 C3.999,2.73,4.638,2.316,5.422,2.001c0.742-0.296,1.584-0.512,2.836-0.57C9.518,1.373,9.898,1.361,12.639,1.361 M12,0 C8.741,0,8.333,0.014,7.053,0.072C5.776,0.13,4.905,0.333,4.14,0.63c-0.789,0.306-1.459,0.717-2.123,1.382 C1.353,2.676,0.943,3.345,0.637,4.133C0.333,4.902,0.13,5.773,0.072,7.053C0.014,8.333,0,8.741,0,12 c0,3.259,0.014,3.667,0.072,4.947c0.06,1.276,0.262,2.147,0.565,2.912c0.306,0.789,0.717,1.459,1.382,2.123 c0.665-0.665,1.334,1.075,2.123,1.382c0.765,0.296,1.636,0.502,2.912,0.565C8.333,23.986,8.741,24,12,24 c3.259,0,3.667-0.014,4.947-0.072c1.276-0.06,2.147-0.262,2.912-0.565c0.789-0.306,1.459-0.717,2.123-1.382 c0.665-0.665,1.075-1.334,1.382-2.123c0.296-0.765,0.502-1.636,0.565-2.912C23.986,15.667,24,15.259,24,12 c0-3.259-0.014-3.667-0.072-4.947c-0.06-1.276-0.262-2.147-0.565-2.912c-0.306-0.789-0.717-1.459-1.382-2.123 C21.324,1.353,20.655,0.943,19.867,0.637c-0.765-0.296-1.636-0.502-2.912-0.565C15.667,0.014,15.259,0,12,0 L12,0 Z M12,5.838c-3.403,0-6.162,2.759-6.162,6.162s2.759,6.162,6.162,6.162s6.162-2.759,6.162-6.162S15.403,5.838,12,5.838z M12,16.24c-2.339,0-4.24-1.901-4.24-4.24s1.901-4.24,4.24-4.24s4.24,1.901,4.24,4.24S14.339,16.24,12,16.24z M18.402,6.963 c-0.799,0-1.446,0.647-1.446,1.446s0.647,1.446,1.446,1.446s1.446-0.647,1.446-1.446S19.201,6.963,18.402,6.963z"/></svg>
+                        </a>
+                        <a href="#" title="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h16c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z M8.339,18.337H5.667v-8.59h2.672V18.337z M7.003,8.574c-0.856,0-1.548-0.694-1.548-1.548s0.691-1.548,1.548-1.548c0.854,0,1.548,0.693,1.548,1.548S7.857,8.574,7.003,8.574z M18.338,18.337h-2.669v-4.177c0-0.996-0.017-2.278-1.387-2.278c-1.389,0-1.601,1.086-1.601,2.206v4.249h-2.667v-8.59h2.56v1.174h0.037 c0.356-0.675,1.227-1.387,2.526-1.387c2.703,0,3.203,1.779,3.203,4.092V18.337z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/webtech.solution.2025/" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.397,20.997v-8.196h2.765l0.411-3.209h-3.176V7.548c0-0.926,0.258-1.56,1.587-1.56h1.684V3.127 c-0.291-0.039-1.29-0.127-2.443-0.127c-2.43,0-4.108,1.492-4.108,4.223v2.355H7.332v3.209h2.753v8.196H13.397z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Webtech Solution - Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk Toggle Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        const navLinks = document.querySelectorAll('.main-nav ul li a'); 
+
+        if (menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                const isExpanded = mainNav.classList.contains('active');
+                menuToggle.setAttribute('aria-expanded', isExpanded);
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    let currentUrl = window.location.pathname.split('/').pop() || "index.html"; 
+                    let linkUrlTarget = new URL(link.href);
+                    let linkFile = linkUrlTarget.pathname.split('/').pop() || "index.html";
+
+                    if (mainNav.classList.contains('active')) {
+                        if (link.getAttribute('href').startsWith('#') && currentUrl === linkFile) {
+                             mainNav.classList.remove('active');
+                             menuToggle.classList.remove('active');
+                             menuToggle.setAttribute('aria-expanded', 'false');
+                        } else if (currentUrl === linkFile && !link.getAttribute('href').includes('#')) {
+                             mainNav.classList.remove('active');
+                             menuToggle.classList.remove('active');
+                             menuToggle.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
